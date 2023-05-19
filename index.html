@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        form {
+            margin: auto;
+            border: solid red 1px;
+            padding: 20px 50px 30px;
+            width: 300px;
+        }
+
+        h3 {
+            text-align: center;
+            margin: auto;
+            padding: 10px 51px;
+            width: 300px;
+            background-color: red;
+            color: white;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .owners_none {
+            display: none;
+        }
+
+        .used {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        #engine {
+            width: 80%;
+        }
+
+        #engine:invalid {
+            border: red 3px solid;
+        }
+
+        button {
+            display: block;
+            margin: auto;
+            background-color: red;
+            color: white;
+            border: none;
+            width: 150px;
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        .output {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <h3>Calculate the price of your car</h3>
+    <form action="#" name="form1">
+        <!-- Marque de la voiture (Jaguar, Mazda, Opel, Renault) -->
+        <h2>Select the brand</h2>
+        <div>
+            <select class="brand" name="select-brand">
+                <option hidden>Select brand</option> 
+                <option value="disable">None of these brands</option> 
+                <option value="jaguar">Jaguar</option>
+                <option value="mazda">Mazda</option>
+                <option value="opel">Opel</option>
+                <option value="renault">Renault</option>
+            </select>
+        </div>
+
+        <!-- Modele de la voiture pour chaque marque :
+        - Jaguar : Jaguar I-PACE, Jaguar E-PACE, Jaguar F-PACE, Jaguar XE, Jaguar XF 
+        - Mazda : Mazda 2, Mazda 3, Mazda Cx-5, Mazda Mx5
+        - Opel : Astra, Corsa, Crossland, Grandland, Mokka
+        - Renault : Austral, Clio,  Kangoo, Megane, Twingo, Zoe -->
+        <h2>Select the model</h2>
+        <select class="selectModel none">
+            
+        </select>
+
+        <!-- Selection du carburant (essence, diezel, gaz, electricite) -->
+
+        <h2>Select the fuel</h2>
+        <div class="selectFuel">
+            <input type="checkbox" name="diesel" id="diesel" value="diesel">
+            <label for="diesel">Diesel</label><br>
+
+            <input type="checkbox" name="gasoline" id="gasoline" value="gasoline">
+            <label for="gasoline">Gasoline</label><br>
+
+            <input type="checkbox" name="gaz" id="gaz" value="gaz">
+            <label for="gaz">Gaz</label><br>
+
+            <input type="checkbox" name="electricity" id="electricity" value="electricity">
+            <label for="electricity">Electicity</label><br>
+        </div>
+
+        <!-- Volume du moteur (de 1,1 litres a 3,5 litres) -->
+        <h2>Select engine volume</h2>
+        <input type="number" id="engine" min="1.1" max="3.5" step="0.1" placeholder="between 1,1 and 3,5L">
+
+        <!-- Etat de la voiture (neuve, occasion) -->
+        <h2>Select car condition</h2>
+            <p>
+                <!-- ownersAutoPage -> showOwnersNumber  -->
+                <div class="carCondition">
+                    <input type="radio" name="condition" id="new" value="new">
+                    <label for="new">New</label><br>
+
+                    <input type="radio" name="condition" id="used" value="used">
+                    <label for="used">Used</label><br>
+                </div>
+
+                <!-- Si la voiture est d'occasion, une case a cocher apparait pour demander le nombre de proprietaires (1-2, 3 et plus)  -->
+
+                <!-- nbOwnersAutoPage -->
+                <div class="owners_none used">
+                    <input type="radio" name="owners" value="1_2owners" id="1_2owners">
+                    <label for="1_2owners">1-2 owner(s)</label><br>
+
+                    <input type="radio" name="owners" value="gt3owners" id="gt3owners">
+                    <label for="gt3owners">> 3 owners</label><br>
+                </div>
+            </p>
+
+        
+        <!-- Bouton radio pour selectionner le mode de paiement (carte, especes, compte pour une personne morale) -->
+        <h2>Select payment method</h2>
+            <div class="payment">
+                <input type="radio" name="payment" id="card" value="card">
+                <label for="card">Card</label><br>
+
+                <input type="radio" name="payment" id="cash" value="cash">
+                <label for="cash">Cash</label><br>
+            </div>
+     
+
+    </form>
+
+    <br />
+    <!-- Le choix de l'un ou l'autre des elements doit affecter le prix. Ici on a mis le bouton hors du formulaire
+    car sinon le bouton reinitialise le formulaire des
+    que l'on clique.-->
+    <button>Calculate price</button>
+
+    <div class="output"></div>
+    
+  
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
